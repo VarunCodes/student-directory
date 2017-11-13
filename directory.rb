@@ -21,14 +21,16 @@ def print_header
     puts "The students of Villains Academy"
     puts "-------------"
 end
-def print(students)      
-    students.each_with_index do |student, index|
-        if student[:name].start_with?("a") 
-            if student[:name].size < 12  
-            #if statement which finds students whose names are < 12 characters
-                puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)" 
-            end
-        end
+def print(students)
+    #if student[:name].start_with?("a") 
+    #if student[:name].size < 12 
+    index = 0
+    until index == students.length  
+    #until loop runs until the index matches length of the students array
+        student = students[index]
+        puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+        #using {index +1} so the index begins at 1 instead of 0
+        index += 1   #until loop iterates over index
     end
 end
 def print_footer(students)
