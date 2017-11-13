@@ -21,10 +21,12 @@ def print_header
     puts "The students of Villains Academy"
     puts "-------------"
 end
-def print(students)
+def print(students)      
     students.each_with_index do |student, index|
+        if student[:name].start_with?("a") #puts students name if it begins with 'a'
         puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"
-    end      #added indexes to preceed each name
+        end
+    end
 end
 def print_footer(students)
     puts "Overall, we have #{students.count} great students."
@@ -33,7 +35,3 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
-
-
-
-
