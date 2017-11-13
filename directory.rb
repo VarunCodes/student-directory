@@ -23,8 +23,11 @@ def print_header
 end
 def print(students)      
     students.each_with_index do |student, index|
-        if student[:name].start_with?("a") #puts students name if it begins with 'a'
-        puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"
+        if student[:name].start_with?("a") 
+            if student[:name].size < 12  
+            #if statement which finds students whose names are < 12 characters
+                puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)" 
+            end
         end
     end
 end
