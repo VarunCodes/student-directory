@@ -1,19 +1,13 @@
 def input_students
     puts "Please enter the names of the students".center(50)
     puts "To finish, just hit return twice".center(50)
-    # create an empty array
     students = []
-    # get the first name
-    name = gets.chomp
-    # while the name is not emptym repeat this code
+    name = gets.gsub(/\n/, "")   #the regexp n captures the expression to be placed in array 
     while !name.empty? do
-        #add the student hash to the array
         students << {name: name, cohort: :november}
         puts "Now we have #{students.count} students"
-        # get another name from the user
-        name = gets.chomp
+        name = gets.gsub(/\n/, "")    #other alternatives are chop, break, delete
     end
-    #return the array of students
     students
 end
 #and then print them
@@ -34,7 +28,6 @@ end
 def print_footer(students)
     puts "Overall, we have #{students.count} great students.".center(50) if students.count != 1
     puts "Overall, we have #{students.count} great student.".center(50) if students.count == 1
-    #new puts messages to reflect the number of students, if there's just one
 end
 students = input_students
 print_header
