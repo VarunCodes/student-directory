@@ -1,33 +1,46 @@
 @students = []
 def interactive_menu
-  loop do
-    print_menu
+    loop do
+        print_menu
     process(gets.chomp)
-  end
+end
 end
 def print_menu
-  puts "1. Input the students"
-  puts "2. Show the students"
-  puts "9. Exit" 
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "3. Save the list to students.csv"
+    puts "9. Exit" 
 end
 
 def show_students
-  print_header
-  print_students_list
-  print_footer
+    print_header
+    print_students_list
+    print_footer
 end
 
 def process(selection)
-  case selection
-  when "1"
-    input_students
-  when "2"
-    show_students
-  when "9"
-    exit # this will cause the program to terminate
-  else
-    puts "I don't know what you meant, try again"
-  end
+    case selection
+    when "1"
+        input_students
+    when "2"
+        show_students
+    when "3"
+        save_students
+    when "9"
+        exit 
+    else
+        puts "I don't know what you meant, try again"
+    end
+end
+
+def save_students
+    file = File.open("students.csv", "w")
+    @students.each do |student|
+        student_data = [student[:name], student[:cohort]]
+        csv_line = student_data.join(",")
+        file.puts csv_line
+    end
+    file.close
 end
 
 def input_students
@@ -36,12 +49,12 @@ def input_students
     name = gets.gsub(/\n/, "") 
     while !name.empty? do
         @students << {name: name, cohort: :november}
-        puts "Now we have #{@students.count} students"
+        puts "Now we have #{@students.count} students".center(50)
         name = gets.gsub(/\n/, "") 
     end
     @students
 end
-#and then print them
+
 def print_header
     puts "The students of Makers Academy".center(50)
     puts "-------------".center(50)
@@ -57,7 +70,7 @@ def print_students_list
     end
 end
 def print_footer
-    if @students.count == 0  # if statement to determine if students array is empty
+    if @students.count == 0  # 
         puts "No students to be found!".center(50)
     else
         puts "Overall, we have #{@students.count} great students.".center(50) if @students.count != 1
