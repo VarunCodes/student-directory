@@ -44,6 +44,7 @@ def save_students
         file.puts csv_line
     end
     file.close
+    puts "The students have been saved!"
 end
 def load_students(filename = "students.csv")
     file = File.open(filename, "r")
@@ -52,6 +53,7 @@ def load_students(filename = "students.csv")
         @students << {name: name, cohort: cohort.to_sym}
     end
     file.close
+    puts "The students have been loaded from file."
 end
 def try_load_students
     filename = ARGV.first
@@ -71,6 +73,7 @@ def input_students
     name = STDIN.gets.chomp 
     while !name.empty? do
         @students << {name: name, cohort: :november}
+        puts "The name has successfully been entered."
         puts "Now we have #{@students.count} students".center(50)
         name = STDIN.gets.chomp 
     end
