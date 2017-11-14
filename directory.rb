@@ -1,6 +1,6 @@
 def input_students
-    puts "Please enter the names of the students"
-    puts "To finish, just hit return twice"
+    puts "Please enter the names of the students".center(50)
+    puts "To finish, just hit return twice".center(50)
     # create an empty array
     students = []
     # get the first name
@@ -18,23 +18,21 @@ def input_students
 end
 #and then print them
 def print_header
-    puts "The students of Villains Academy"
-    puts "-------------"
+    puts "The students of Villains Academy".center(50)
+    puts "-------------".center(50)
 end
 def print(students)
     #if student[:name].start_with?("a") 
     #if student[:name].size < 12 
     index = 0
     until index == students.length  
-    #until loop runs until the index matches length of the students array
         student = students[index]
-        puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
-        #using {index +1} so the index begins at 1 instead of 0
-        index += 1   #until loop iterates over index
+        puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)".center(50)
+        index += 1  
     end
 end
 def print_footer(students)
-    puts "Overall, we have #{students.count} great students."
+    puts "Overall, we have #{students.count} great students.".center(50)
 end
 students = input_students
 print_header
