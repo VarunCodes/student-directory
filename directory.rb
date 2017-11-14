@@ -32,7 +32,9 @@ def print(students)
     end
 end
 def print_footer(students)
-    puts "Overall, we have #{students.count} great students.".center(50)
+    puts "Overall, we have #{students.count} great students.".center(50) if students.count != 1
+    puts "Overall, we have #{students.count} great student.".center(50) if students.count == 1
+    #new puts messages to reflect the number of students, if there's just one
 end
 students = input_students
 print_header
