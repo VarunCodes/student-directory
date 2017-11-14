@@ -26,7 +26,7 @@ def print(students)
     end
 end
 def print_footer(students)
-    if students.count == 0  # if statement to determine if students array is empty
+    if students.count == 0  
         puts "No students to be found!".center(50)
     else
         puts "Overall, we have #{students.count} great students.".center(50) if students.count != 1
